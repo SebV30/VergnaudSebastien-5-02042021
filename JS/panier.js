@@ -27,7 +27,7 @@ let itemBasket = [];
     }
 */
 
-let productId = []
+let products = []
 
 //Boucle FOR
 for (b = 0; b < cartItem.length; b++) {
@@ -39,7 +39,7 @@ for (b = 0; b < cartItem.length; b++) {
     <td class="d-flex-inline justify-content-around">${cartItem[b].quantity}</td>
     <td>${(cartItem[b].price * cartItem[b].quantity)} €</td>
     `
-    productId.push(cartItem[b]._id)
+    products.push(cartItem[b]._id)
 }
 //--------------------------- Modif Bouton "trash" sur chaque ligne ---------------------
 /*<button class = "clear" title = "Supprimer cet article" aria - label = "Supprimer cet article" ><i class="fas fa-trash-alt"></i></button>*/
@@ -84,23 +84,24 @@ clear.addEventListener("click", (e) => {
 let totalPrice = [];
 
 //Aller cherche les prix dans le panier
+let basketPrice = 0;
 for (p = 0; p < cartItem.length; p++) {
-    let basketPrice = cartItem[p].price * cartItem[p].quantity;
+    basketPrice = cartItem[p].price * cartItem[p].quantity;
 
     //Mettre les prix du panier dans la variable "totalPrice"
     totalPrice.push(basketPrice);
     console.log(totalPrice);
 }
-
 //Additionner les prix du tableau "totalPrice" avec la méthode .reduce
+let total = 0;
 const reducer = (accumulator, currentValue) => accumulator + currentValue;
-const totalBasketPrice = totalPrice.reduce(reducer, 0);
-console.log(totalBasketPrice);
+total = totalPrice.reduce(reducer, 0);
+console.log(total);
 
 //Le code HTML du prix à afficher
 const totalBasketPriceHtml = document.getElementById("totalBasketPrice");
 totalBasketPriceHtml.innerHTML = `
-${totalBasketPrice} €
+${total} €
 `;
 
 //**************************** FIN PRIX TOTAL + SUPPRESSION PANIER ***********************
@@ -160,187 +161,183 @@ form.innerHTML = `
 // addEventListener bouton confirmation commande
 const sendForm = document.getElementById("sendForm");
 sendForm.addEventListener("click", (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        // Mettre les valeurs du formulaire dans un objet
-        const formValues = {
-                firstName: document.getElementById("first-name").value, // ==> regex FormValues
-                lastName: document.getElementById("last-name").value, // ==> regex FormValues
-                city: document.getElementById("inputCity").value, // ==> regex FormValues
-                address: document.getElementById("inputAddress").value, // ==> regex FormAddValues
-                email: document.getElementById("inputEmail4").value,
-                adresse2: document.getElementById("inputAddress2").value, // ==> regex FormAddValues
-                codePostal: document.getElementById("inputZip").value,
-            }
-            //console.log(formValues);
-            //---------------------------------------- VERIFICATION DONNES SAISES DANS LE FORMULAIRES ---------------------------------
-
-        //CONSTANTES DONNEES FORMULAIRE
-        const lastName = formValues.lastName;
-        const firstName = formValues.firstName;
-        const ville = formValues.city;
-        const email = formValues.email;
-        const address = formValues.address;
-        const address2 = formValues.adresse2;
-        const codePostal = formValues.codePostal;
-
-        /****************** VERIFICATION DONNEE : NOM + PRENOM + VILLE **************/
-        const regexFormvalues = (value) => {
-            return /^[A-Za-z\s-ÀÂÄÇÈÉÊËÎÏÔÖÙÛÜàâäçéèêëîïôöùûü]{2,20}$/.test(value);
-        };
-
-        /*
-        modif return pour ajouter texte ""valide" ou non
-        return document.getElementById("smallFirstName").innerHTML = `
-        Case FAUSSE
-        `;
-        small.classList.add("text-success"); => TRUE
-        smallclassList.remove("text-danger") => TRUE
-        small.classList.add("text-danger"); => FALSE
-        smallclassList.remove("text-success") => FALSE
-        VOIR POUR "TOGGLE"
-        */
-
-        function lastNameControl() {
-            if (regexFormvalues(lastName)) {
-                console.log("nom valide")
-                return true;
-            } else {
-                alert("De 3 à 20 caractères.\nChiffres et caratères spéciaux interdits")
-                console.log("nom invalide")
-                return false;
-            }
-        };
-
-        function firstNameControl() {
-            if (regexFormvalues(firstName)) {
-                console.log("prénom valide")
-                return true;
-            } else {
-                alert("De 3 à 20 caractères en majuscule.\nChiffres et caratères spéciaux interdits")
-                console.log("prénom invalide")
-                return false;
-            }
-        };
-
-        function villeControl() {
-            if (regexFormvalues(ville)) {
-                console.log("ville valide")
-                return true;
-            } else {
-                //alert("De 3 à 20 caractères.\nChiffres et caratères spéciaux interdits")
-                console.log("ville invalide")
-                return false;
-            }
-        };
-        /****************** VERIFICATION DONNEE : EMAIL **************/
-
-        const regexEmail = (value) => {
-            return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/g.test(value);
-        };
-
-        function emailControl() {
-            if (regexEmail(email)) {
-                console.log("e-mail valide")
-                return true;
-            } else {
-                alert("E-mail non valide")
-                console.log("e-mail invalide")
-                return false;
-            }
-        };
-        /****************** VERIFICATION DONNEE : ADRESSE + COMPLEMENT **************/
-
-        const regexFormAddvalues = (value) => {
-            return /^[A-Za-z0-9\s-,'ÀÂÄÇÈÉÊËÎÏÔÖÙÛÜàâäçéèêëîïôöùûü]{0,50}$/.test(value);
+    // Mettre les valeurs du formulaire dans un objet
+    const contact = {
+            firstName: document.getElementById("first-name").value, // ==> regex FormValues
+            lastName: document.getElementById("last-name").value, // ==> regex FormValues
+            city: document.getElementById("inputCity").value, // ==> regex FormValues
+            address: document.getElementById("inputAddress").value, // ==> regex FormAddValues
+            email: document.getElementById("inputEmail4").value,
         }
+        //console.log(formValues);
+        //---------------------------------------- VERIFICATION DONNES SAISES DANS LE FORMULAIRES ---------------------------------
 
-        function addressControl() {
-            if (regexFormAddvalues(address)) {
-                console.log("address valide")
-                return true;
-            } else {
-                //alert("De 5 à 50 caractères.\nChiffres et caratères spéciaux interdits")
-                console.log("address invalide")
-                return false;
-            }
-        };
+    const formSuit = {
+        adresse2: document.getElementById("inputAddress2").value, // ==> regex FormAddValues
+        codePostal: document.getElementById("inputZip").value,
+    }
 
-        function address2Control() {
-            if (regexFormAddvalues(address2)) {
-                console.log("Comp add valide")
-                return true;
-            } else {
-                //alert("De 3 à 20 caractères.\nChiffres et caratères spéciaux interdits")
-                console.log("Comp add invalide")
-                return false;
-            }
-        };
+    //CONSTANTES DONNEES FORMULAIRE
+    const lastName = contact.lastName;
+    const firstName = contact.firstName;
+    const ville = contact.city;
+    const email = contact.email;
+    const address = contact.address;
+    const address2 = formSuit.adresse2;
+    const codePostal = formSuit.codePostal;
 
-        /****************** VERIFICATION DONNEE : CODE POSTAL **************/
+    /****************** VERIFICATION DONNEE : NOM + PRENOM + VILLE **************/
+    const regexFormvalues = (value) => {
+        return /^[A-Za-z\s-ÀÂÄÇÈÉÊËÎÏÔÖÙÛÜàâäçéèêëîïôöùûü]{2,20}$/.test(value);
+    };
 
-        const regexCodePostal = (value) => {
-            return /^[0-9]{5}$/.test(value);
-        };
+    /*
+    modif return pour ajouter texte ""valide" ou non
+    return document.getElementById("smallFirstName").innerHTML = `
+    Case FAUSSE
+    `;
+    small.classList.add("text-success"); => TRUE
+    smallclassList.remove("text-danger") => TRUE
+    small.classList.add("text-danger"); => FALSE
+    smallclassList.remove("text-success") => FALSE
+    VOIR POUR "TOGGLE"
+    */
 
-        function codePostalControl() {
-            if (regexCodePostal(codePostal)) {
-                console.log("zip valide")
-                return true;
-            } else {
-                alert("Le code postal est composé de 5 chiffres")
-                console.log("zip invalide")
-                return false;
-            }
-        };
+    function lastNameControl() {
+        if (regexFormvalues(lastName)) {
+            console.log("nom valide")
+            return true;
+        } else {
+            alert("De 3 à 20 caractères.\nChiffres et caratères spéciaux interdits")
+            console.log("nom invalide")
+            return false;
+        }
+    };
 
-        //Créer constante const "order"
-        //const orderId = Math.floor(Math.random() * 99999);
+    function firstNameControl() {
+        if (regexFormvalues(firstName)) {
+            console.log("prénom valide")
+            return true;
+        } else {
+            alert("De 3 à 20 caractères en majuscule.\nChiffres et caratères spéciaux interdits")
+            console.log("prénom invalide")
+            return false;
+        }
+    };
 
-        // Contrôle validité formulaire avant envoie dans LS
-        if (lastNameControl() && firstNameControl() && emailControl() && addressControl() && address2Control() && codePostalControl() && villeControl()) {
-            //Mettre l'objcet "formValues" dans le LS
-            localStorage.setItem("formValues", JSON.stringify(formValues));
-            //Mettre les "valeurs formulaire" et "porduits panier" dans un objet
-            const toSend = JSON.stringify({
-                cartItem,
-                formValues
-            });
-            console.log(toSend);
+    function villeControl() {
+        if (regexFormvalues(ville)) {
+            console.log("ville valide")
+            return true;
+        } else {
+            //alert("De 3 à 20 caractères.\nChiffres et caratères spéciaux interdits")
+            console.log("ville invalide")
+            return false;
+        }
+    };
+    /****************** VERIFICATION DONNEE : EMAIL **************/
 
-            //Envoie de "toSend" au serveur
-            const promiseSend = fetch("http://localhost:3000/api/teddies/order", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: toSend
-                })
-                .then(async(sentResponse) => {
-                    try {
-                        const basketValues = await sentResponse.json();
-                        console.log(basketValues);
+    const regexEmail = (value) => {
+        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/g.test(value);
+    };
 
-                    } catch (e) {
-                        console.log(e);
-                    }
-                })
-                .then()
+    function emailControl() {
+        if (regexEmail(email)) {
+            console.log("e-mail valide")
+            return true;
+        } else {
+            alert("E-mail non valide")
+            console.log("e-mail invalide")
+            return false;
+        }
+    };
+    /****************** VERIFICATION DONNEE : ADRESSE + COMPLEMENT **************/
+
+    const regexFormAddvalues = (value) => {
+        return /^[A-Za-z0-9\s-,'ÀÂÄÇÈÉÊËÎÏÔÖÙÛÜàâäçéèêëîïôöùûü]{0,50}$/.test(value);
+    }
+
+    function addressControl() {
+        if (regexFormAddvalues(address)) {
+            console.log("address valide")
+            return true;
+        } else {
+            //alert("De 0 à 50 caractères.\nChiffres et caratères spéciaux interdits")
+            console.log("address invalide")
+            return false;
+        }
+    };
+
+    function address2Control() {
+        if (regexFormAddvalues(address2)) {
+            console.log("Comp add valide")
+            return true;
+        } else {
+            //alert("De 0 à 50 caractères.\nChiffres et caratères spéciaux interdits")
+            console.log("Comp add invalide")
+            return false;
+        }
+    };
+
+    /****************** VERIFICATION DONNEE : CODE POSTAL **************/
+
+    const regexCodePostal = (value) => {
+        return /^[0-9]{5}$/.test(value);
+    };
+
+    function codePostalControl() {
+        if (regexCodePostal(codePostal)) {
+            console.log("zip valide")
+            return true;
+        } else {
+            alert("Le code postal est composé de 5 chiffres")
+            console.log("zip invalide")
+            return false;
+        }
+    };
+
+    // Contrôle validité formulaire avant envoie dans LS
+    if (lastNameControl() && firstNameControl() && emailControl() && addressControl() && address2Control() && codePostalControl() && villeControl()) {
+        //Mettre l'objcet "formValues" dans le LS
+        localStorage.setItem("contact", JSON.stringify(contact));
+        //Mettre les "valeurs formulaire" et "porduits panier" dans un objet
+        const toSend = JSON.stringify({
+            products,
+            contact
         });
 
-    //Voir le résultat su serveur dans la console
+        console.log(toSend);
 
-    promiseSend
+        //Envoie de "toSend" au serveur
+        fetch("http://localhost:3000/api/teddies/order", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: toSend //variables à envoyer au serveur
+            })
+            .then(response => {
+                return response.json(); //Réponse renvoyée par le serveur au format json
+            })
+            .then(result => { //Résultat attendu
+                localStorage.setItem("receive", JSON.stringify(result.contact)); //Retour données "contact" du formulaire
+                localStorage.setItem("order", JSON.stringify(result.orderId)); //retour de l'Id commande fournie par le serveur
+                localStorage.setItem("total", JSON.stringify(total)); //Retour du montant de la commande récupéré dans les données du panier (calcul du prix total)
+                localStorage.removeItem("contact"); //suppression des données renseignées par l'utilisateur du LS
+                localStorage.removeItem("anyItem"); //suppression des produits ajoutés au panier par l'utilisateur du LS
+                window.location.href("confirmation.html") //redirection de l'utilisateur vers la page de confirmation
+            })
+            .catch(error => {
+                console.log(error); //Message à afficher en cas d'erreur lors du fetch 
+            });
 
-    //Voir ce qu'il y a réellement sur le serveur
+    } else {
+        alert("Veillez à bien remplir le formulaire") //Si données formulaire non conforme aux REGEX
+    }
 
-
-}
-else {
-    alert("Veillez à bien remplir le formulaire")
-}
-
-//*************************************** FIN - VERIFICATION DONNES SAISES DANS LE FORMULAIRES *****************************
+    //*************************************** FIN - VERIFICATION DONNES SAISES DANS LE FORMULAIRES *****************************
 
 
 
