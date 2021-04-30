@@ -327,7 +327,7 @@ sendForm.addEventListener("click", (e) => {
                 localStorage.setItem("total", JSON.stringify(total)); //Retour du montant de la commande récupéré dans les données du panier (calcul du prix total)
                 localStorage.removeItem("contact"); //suppression des données renseignées par l'utilisateur du LS
                 localStorage.removeItem("anyItem"); //suppression des produits ajoutés au panier par l'utilisateur du LS
-                window.location.href("confirmation.html") //redirection de l'utilisateur vers la page de confirmation
+                window.location.replace("confirmation.html") //redirection de l'utilisateur vers la page de confirmation
             })
             .catch(error => {
                 console.log(error); //Message à afficher en cas d'erreur lors du fetch 
