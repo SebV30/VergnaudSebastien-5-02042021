@@ -26,7 +26,7 @@ const fetchProducts = async() => {
             var product = data;
             result.innerHTML = (
                 `
-                    <div class="card col-xl-12 card-product">
+                    <div class="card card-product">
                         <img src="${product.imageUrl}" class="card-img-top" alt="Ours en peluche" title="Ours ${product.name}" aria-label="Ours ${product.name} />
                         <div class="card-body">
                             <div class="card-info">

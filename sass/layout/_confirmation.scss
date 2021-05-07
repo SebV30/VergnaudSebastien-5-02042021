@@ -6,4 +6,19 @@
 
 .confirm-color {
     color: $color-secondary;
+    font-size: 16px;
+    @include tablette {
+        font-size: 20px;
+    }
+    @include pc {
+        font-size: 22px;
+    }
+    @include pc-xl {
+        font-size: 24px;
+    }
+}
+
+.btn {
+    color: $primary-font-color;
+    margin: auto;
 }
