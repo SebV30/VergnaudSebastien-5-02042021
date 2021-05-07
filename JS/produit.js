@@ -26,7 +26,7 @@ const fetchProducts = async() => {
             var product = data;
             result.innerHTML = (
                 `
-                    <div class="card card-product">
+                    <div class="card col-xl-12 card-product">
                         <img src="${product.imageUrl}" class="card-img-top" alt="Ours en peluche" title="Ours ${product.name}" aria-label="Ours ${product.name} />
                         <div class="card-body">
                             <div class="card-info">
@@ -41,7 +41,7 @@ const fetchProducts = async() => {
                                     </select>
                                 </div>
                             </div>
-                            <a href="panier.html" id="btn-send" class="btn btn-info col-10 col-sm-5 col-md-8 col-lg-6 col-xl-6 btn-block ml-auto mr-auto mb-3">Ajouter l'article au panier</a>
+                            <a href="panier.html" id="btn-send" class="btn btn-info col-10 col-sm-5 col-md-8 col-lg-6 col-xl-8 btn-block ml-auto mr-auto mb-3">Ajouter l'article au panier</a>
                         </div>
                     </div>
                     `
