@@ -27,13 +27,13 @@ h1 {
 }
 
 .card {
-    /* width: 40%; */
+    /* width: 45%; */
     margin-bottom: 35px;
     border-radius: 25px;
 }
 
 .card-img-top {
-    max-height: 275px;
+    /* max-height: 275px; */
     object-fit: initial;
     border-radius: 25px 25px 0 0;
 }
@@ -100,4 +100,8 @@ tr {
 
 .clear {
     font-size: 32px;
+}
+
+.img_index {
+    max-height: 110px;
 }

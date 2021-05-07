@@ -26,22 +26,22 @@ const fetchProducts = async() => {
             var product = data;
             result.innerHTML = (
                 `
-                    <div class="card">
+                    <div class="card card-product">
                         <img src="${product.imageUrl}" class="card-img-top" alt="Ours en peluche" title="Ours ${product.name}" aria-label="Ours ${product.name} />
                         <div class="card-body">
-                            <div class="description">
-                                <h2 class="card-title">${product.name}</h2>
-                                <p class="card-text">${product.price/100}€</p>
+                            <div class="card-info">
+                                <h2 class="name-price card-title">${product.name}</h2>
+                                <p class="name-price card-text">${product.price/100}€</p>
                             </div>
-                            <p class="card-text">${product.description}</p>
-                            <div class="d-md-flex d-lg-flex justify-content-around col-md-6 col-lg-5">
+                            <p class="prod-descrip">${product.description}</p>
+                            <div class="d-md-flex d-lg-flex justify-content-around mt-2 option-choice">
                                 <p>Choisissez une couleur</p>
                                 <div class="pb-3">
                                     <select id="colors">
                                     </select>
                                 </div>
                             </div>
-                            <a href="panier.html" id="btn-send" class="btn btn-info col-10 col-sm-5 col-md-8 col-lg-10 col-xl-3 btn-block m-auto">Ajouter l'article au panier</a>
+                            <a href="panier.html" id="btn-send" class="btn btn-info col-10 col-sm-5 col-md-8 col-lg-6 col-xl-6 btn-block ml-auto mr-auto mb-3">Ajouter l'article au panier</a>
                         </div>
                     </div>
                     `

@@ -5,12 +5,12 @@ let order = JSON.parse(localStorage.getItem("order"));
 const thanks = document.getElementById("confirm");
 thanks.innerHTML = `
 <div class="text-center m-auto">
-    <p>Merci ${receive.firstName} ${receive.lastName}.</p>
+    <p>Merci :<br><span class="confirm-color">${receive.firstName} ${receive.lastName}</span></p>
     <p>Votre commande numéro :</p>
-    <p class="font-bold">${order}</p>
-    <p>D'un montant total de <span >${total}</span> € sera expédiée, dans les meilleurs délais, à l'adresse suivante :</p>
-    <p>${receive.address}</p>
-    <p>${receive.city}</p>
+    <p class="font-bold"><span class="confirm-color">${order}</span></p>
+    <p>D'un montant total de <span class="confirm-color">${total} €</span> sera expédiée, dans les meilleurs délais, à l'adresse suivante :</p>
+    <p><span class="confirm-color">${receive.address}</span></p>
+    <p><span class="confirm-color">${receive.city}</span></p>
 </div>
 `;
 

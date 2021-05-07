@@ -1,0 +1,337 @@
+/*  MEDIA QUERIES  */
+.body {
+  background-color: whitesmoke;
+  width: 100%;
+  font-family: "Roboto";
+}
+
+header {
+  background-color: whitesmoke;
+}
+header h1 {
+  font-size: 25px;
+  margin: 0;
+  padding: 20px;
+  color: #9356dc;
+}
+header nav {
+  border-top: 2px solid #dfdfdf;
+  border-bottom: 2px solid #dfdfdf;
+  background-color: whitesmoke;
+  margin-bottom: 10px;
+}
+
+#title-page {
+  width: 90%;
+  padding: 10px;
+  color: #e0850e;
+  border: 2px solid #dfdfdf;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  #title-page {
+    width: 50%;
+    margin: 15px;
+    justify-content: space-around;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  #title-page {
+    width: 40%;
+    margin: 15px;
+    justify-content: space-around;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  #title-page {
+    width: 40%;
+    margin: 15px;
+    justify-content: space-around;
+  }
+}
+#title-page .discovery {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #000000;
+}
+#title-page h2 {
+  font-size: 2.5rem;
+}
+#title-page p {
+  font-size: 1rem;
+  color: #000000;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  #title-page p {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  #title-page p {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  #title-page p {
+    font-size: 1.25rem;
+  }
+}
+
+article {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 10px auto;
+  border-radius: 20px !important;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .card {
+    width: 45%;
+    margin: 15px;
+    justify-content: space-around;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .card {
+    width: 30%;
+    margin: 15px;
+    justify-content: space-around;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .card {
+    width: 25%;
+    margin: 15px;
+    justify-content: space-around;
+  }
+}
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #dfdfdf;
+  border-radius: 20px 20px 0 0;
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .card img {
+    height: 300px;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .card img {
+    height: 200px;
+  }
+}
+.card .name-price {
+  padding: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.card .btn {
+  color: #000000;
+}
+
+/*.card {
+    margin: 0!important;
+    & .description {
+        display: flex;
+        justify-content: space-between;
+    }
+    & .card-body {
+        width: 90%;
+    }
+}*/
+.card-product {
+  width: 98%;
+  margin: 10px auto;
+  border-radius: 20px !important;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .card-product {
+    width: 75%;
+    margin: 15px;
+    justify-content: space-around;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .card-product {
+    width: 60%;
+    margin: 15px;
+    justify-content: space-around;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .card-product {
+    width: 25%;
+    margin: 15px;
+    justify-content: space-around;
+  }
+}
+.card-product img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #dfdfdf;
+  border-radius: 20px 20px 0 0;
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .card-product img {
+    height: 300px;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .card-product img {
+    height: 200px;
+  }
+}
+.card-product .name-price {
+  padding: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.card-product .prod-descrip {
+  margin: 10px 0;
+  padding: 0 10px;
+  text-align: justify;
+  font-size: 16px;
+}
+.card-product p {
+  font-size: 16px;
+}
+.card-product .option-choice {
+  display: flex;
+}
+.card-product .btn {
+  color: #000000;
+}
+
+.title-basket {
+  width: 95%;
+  margin: auto;
+  color: #e0850e;
+  font-size: 18px;
+  font-style: italic;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .title-basket {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .title-basket {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  .title-basket {
+    font-size: 24px;
+  }
+}
+
+table {
+  width: 100% !important;
+  font-size: 14px;
+  font-weight: 600;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  table {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  table {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  table {
+    font-size: 22px;
+  }
+}
+table .img-article {
+  width: 100%;
+  object-fit: contain;
+}
+table .color {
+  font-size: 14px;
+  font-weight: initial;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  table .color {
+    font-size: 100%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  table .color {
+    font-size: 110%;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  table .color {
+    font-size: 120%;
+  }
+}
+table td {
+  width: 25% !important;
+  padding: 0 !important;
+  vertical-align: middle !important;
+}
+table .end-table {
+  font-size: 100%;
+  font-weight: lighter;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  table .end-table {
+    font-size: 100%;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  table .end-table {
+    font-size: 125%;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  table .end-table {
+    font-size: 150%;
+  }
+}
+
+.foot-conf {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.confirm-color {
+  color: #e0850e;
+}
+
+footer {
+  margin: 10px 0 0 0;
+  border: 2px solid #353535;
+  background-color: #353535;
+  color: #ffffff;
+}
+footer a {
+  text-align: center;
+  color: #ffffff;
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  footer a {
+    font-size: 115%;
+  }
+}
+@media (min-width: 1441px) and (max-width: 1920px) {
+  footer a {
+    font-size: 125%;
+  }
+}
+footer #copyright {
+  font-size: 1.2rem;
+}
+
+/*# sourceMappingURL=style.css.map */

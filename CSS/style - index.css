@@ -1,0 +1,43 @@
+/*---------------------------- MEDIA TABLETTE ----------------------------------*/
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    #result {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .img_index {
+        width: 100%;
+        max-height: 140px;
+    }
+    .card {
+        width: 30%;
+        margin: 12px;
+    }
+}
+
+
+/***************************** FIN MEDIA TABLETTE ********************************/
+
+
+/*---------------------------- MEDIA PC ----------------------------------*/
+
+@media (min-width: 1024px) {
+    #result {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .img_index {
+        height: 190px;
+    }
+    .card {
+        width: 30%;
+        margin: 12px;
+    }
+}
+
+
+/***************************** FIN MEDIA PC ********************************/

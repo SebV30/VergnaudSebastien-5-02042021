@@ -1,0 +1,19 @@
+/*  MEDIA QUERIES  */
+
+@mixin tablette {
+    @media (min-width: $tablette-min) and (max-width: $tablette-max) {
+        @content;
+    }
+}
+
+@mixin pc {
+    @media (min-width: $pc-ecran-min) and (max-width: $pc-ecran-max) {
+        @content;
+    }
+}
+
+@mixin pc-xl {
+    @media (min-width: $pc-ecran-xl-min) and (max-width: $pc-ecran-xl-max) {
+        @content;
+    }
+}

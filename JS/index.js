@@ -27,13 +27,12 @@ const showTeddies = async() => {
         .map(teddie => (
             `
                 <div class="card">
-                    <img src="${teddie.imageUrl}" class="card-img-top" alt="Ours en peluche" title="Ours ${teddie.name}" aria-label="Ours ${teddie.name}" />
+                    <img src="${teddie.imageUrl}" class="card-img-top img_index" alt="Ours en peluche" title="Ours ${teddie.name}" aria-label="Ours ${teddie.name}" />
                     <div class="card-body">
-                        <div class="description">
-                            <h2 class="card-title">${teddie.name}</h2>
-                            <p class="card-text">${teddie.price/100}€</p>
+                        <div class="card-info">
+                            <h2 class="name-price card-title initialism">${teddie.name}</h2>
+                            <p class="name-price card-text">${teddie.price/100}€</p>
                         </div>
-
                         <a href="produit.html?id=${teddie._id}" class="btn btn-info col-6 btn-block m-auto">Voir produit</a>
                     </div>
                 </div>

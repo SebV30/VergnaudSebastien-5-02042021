@@ -35,9 +35,9 @@ for (b = 0; b < cartItem.length; b++) {
     let basketFilling = document.getElementById('basket');
     basketFilling.innerHTML += `
     <td><a href="produit.html?id=${cartItem[b]._id}"><img src="${cartItem[b].imageUrl}" class="img-article" alt="Ours en peluche" ></a></td>
-    <td>${cartItem[b].name}<br>${cartItem[b].color}</td>
-    <td class="d-flex-inline justify-content-around">${cartItem[b].quantity}</td>
-    <td>${(cartItem[b].price * cartItem[b].quantity)} €</td>
+    <td><span class="name">${cartItem[b].name}</span><br><span class="color">${cartItem[b].color}</span></td>
+    <td class="d-flex-inline justify-content-around ">${cartItem[b].quantity}</td>
+    <td>${(cartItem[b].price * cartItem[b].quantity)}<br>€</td>
     `
     products.push(cartItem[b]._id)
 }
@@ -50,11 +50,11 @@ for (b = 0; b < cartItem.length; b++) {
 const basketTotalClear = document.getElementById("sum-del");
 basketTotalClear.innerHTML = `
 <tr>
-<td colspan="3">Montant total de la commande</td>
+<td colspan="3" class="end-table">Montant total de la commande</td>
 <td id="totalBasketPrice"></td>
 </tr>
 <tr>
-<td colspan="3">Vider le panier.</td>
+<td colspan="3" class="end-table">Vider le panier.</td>
 <td><button class="clear" title="Supprimer le contenu de votre panier" aria-label="Supprimer le contenu de votre panier"><i class="fas fa-trash-alt"></i></button></td>
 </tr>
 `;
@@ -112,16 +112,16 @@ ${total} €
 
 const form = document.getElementById("form");
 form.innerHTML = `
-<h2>Veuillez remplir le formulaire pour passer votre commande.</h2>
+<p class="title-basket col-12 mb-3">Veuillez remplir le formulaire pour passer votre commande.</p>
 <div class="row justify-content-center">
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="first-name">Nom</label>
         <input type="text" class="form-control text-center" id="last-name" placeholder="DUPONT" required>
         
     </div>
 </div>
 <div class="row justify-content-center">
-    <div class="col-6">
+    <div class="col-md-6">
         <label for="last-name">Prénom</label>
         <input type="text" class="form-control text-center" id="first-name" placeholder="Martin" required>
     </div>
@@ -154,7 +154,7 @@ form.innerHTML = `
         <input type="text" class="form-control text-center" id="inputCity" placeholder="PARIS" required>
     </div>
 </div>
-<button type="submit" id="sendForm" class="btn btn-info mt-3 mb-5 m-auto">Valider ce panier ET passer la
+<button type="submit" id="sendForm" class="btn btn-info mt-3 mb-5 m-auto col-sm-6 col-md-6 col-lg-6 col-xl-6">Valider ce panier ET passer la
     commande</button>
 `;
 
@@ -169,14 +169,14 @@ sendForm.addEventListener("click", (e) => {
             lastName: document.getElementById("last-name").value, // ==> regex FormValues
             city: document.getElementById("inputCity").value, // ==> regex FormValues
             address: document.getElementById("inputAddress").value, // ==> regex FormAddValues
-            email: document.getElementById("inputEmail4").value,
+            email: document.getElementById("inputEmail4").value, // ==> regex regexEmail
         }
         //console.log(formValues);
         //---------------------------------------- VERIFICATION DONNES SAISES DANS LE FORMULAIRES ---------------------------------
 
     const formSuit = {
         adresse2: document.getElementById("inputAddress2").value, // ==> regex FormAddValues
-        codePostal: document.getElementById("inputZip").value,
+        codePostal: document.getElementById("inputZip").value, // ==> regex regexCodePostal
     }
 
     //CONSTANTES DONNEES FORMULAIRE

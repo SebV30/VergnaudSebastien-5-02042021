@@ -1,0 +1,15 @@
+header {
+    background-color: $color-tertiary;
+    & h1 {
+        font-size: 25px;
+        margin: 0;
+        padding: 20px;
+        color: $color-primary;
+    }
+    & nav {
+        border-top: 2px solid $color-border;
+        border-bottom: 2px solid $color-border;
+        background-color: $color-tertiary;
+        margin-bottom: 10px;
+    }
+}

@@ -6,17 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Sur notre boutique Orinours, vous pourrez acheter de jolis ours en peluche qui ont été faits à la main.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="/CSS/public/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>ORINOCO - Accueil</title>
 </head>
 
-<body>
+<body class="body">
     <header>
         <h1 class="text-center">Bienvenue sur notre site de E-Commerce</h1>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
-            <img src="/logo-1.png" alt="Logo ORINOCO" title="Logo ORINOCO" aria-label="Logo ORINOCO" />
+        <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-between">
+            <img src="/images/logo-1.png" alt="Logo ORINOCO" title="Logo ORINOCO" aria-label="Logo ORINOCO" />
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -34,19 +37,22 @@
         </nav>
     </header>
 
-    <section class="d-flex flex-wrap ">
-        <div id="title-page">
+    <section>
+        <div id="title-page" class="text-center m-auto">
+            <p class="discovery">Découvrez</p>
             <h2>ORINOURS</h2>
             <p>Notre boutique d'ours en peluche.</p>
         </div>
-        <article id="result" class="col-12 col-lg-4 m-auto">
+        <article id="result" class="col-md-12 m-auto d-flex flex-wrap">
+
         </article>
+
     </section>
 
     <footer>
-        <div class="container">
+        <div class="container mt-4">
             <div class="row info-social">
-                <div class="info">
+                <div class="info text-center m-auto">
                     <div class="col-sm">
                         <a href="#">Conditions Générales de vente</a>
                     </div>
@@ -54,7 +60,7 @@
                         <a href="mailto:contanct@orinoco.fr">Nous contacter</a>
                     </div>
                 </div>
-                <div class="social">
+                <div class="social text-center m-auto">
                     <div class="col-sm">
                         <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i
                                 class="fab fa-facebook-f icon-foot"></i>
@@ -67,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <p id="copyright">© ORINOCO 2021</p>
+            <p id="copyright" class="text-center mt-4">© ORINOCO 2021</p>
         </div>
     </footer>
 
