@@ -37,7 +37,7 @@ for (b = 0; b < cartItem.length; b++) {
     <td><a href="produit.html?id=${cartItem[b]._id}"><img src="${cartItem[b].imageUrl}" class="img-article" alt="Ours en peluche" ></a></td>
     <td><span class="name">${cartItem[b].name}</span><br><span class="color">${cartItem[b].color}</span></td>
     <td class="d-flex-inline justify-content-around ">${cartItem[b].quantity}</td>
-    <td>${(cartItem[b].price * cartItem[b].quantity)}<br>€</td>
+    <td>${(cartItem[b].price * cartItem[b].quantity)} €</td>
     `
     products.push(cartItem[b]._id)
 }
@@ -117,6 +117,7 @@ form.innerHTML = `
     <div class="col-md-6">
         <label for="first-name">Nom</label>
         <input type="text" class="form-control text-center" id="last-name" placeholder="DUPONT" required>
+
         
     </div>
 </div>
@@ -207,11 +208,11 @@ sendForm.addEventListener("click", (e) => {
 
     function lastNameControl() {
         if (regexFormvalues(lastName)) {
-            console.log("nom valide")
+            console.log("nom valide");
             return true;
         } else {
             alert("De 3 à 20 caractères.\nChiffres et caratères spéciaux interdits")
-            console.log("nom invalide")
+            console.log("nom invalide");
             return false;
         }
     };
@@ -245,11 +246,11 @@ sendForm.addEventListener("click", (e) => {
 
     function emailControl() {
         if (regexEmail(email)) {
-            console.log("e-mail valide")
+            console.log("e-mail valide");
             return true;
         } else {
             alert("E-mail non valide")
-            console.log("e-mail invalide")
+            console.log("e-mail invalide");
             return false;
         }
     };
