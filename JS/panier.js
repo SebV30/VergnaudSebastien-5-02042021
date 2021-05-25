@@ -5,27 +5,15 @@ cartItem = JSON.parse(localStorage.getItem('anyItem'));
 function basketEmpty() {
     if (cartItem === null) {
         alert("ATTENTION : Votre panier est vide. \n Cliquez sur ''OK'' pour revenir à l'accueil.")
-        window.location = "index.html";
+        window.location = "/HTML/index.html";
     }
 }
 
 basketEmpty();
 
-//console.log(cartItem);
 
 //Création d'un tableau
 let itemBasket = [];
-
-/*
-    {
-        'firsName' : 'prenom',
-        'lastName' : 'nom',
-        'address' : 'ton adresse',
-        'city' : 'ville',
-        'email' : 'monmail@gmail.com',
-        'product_id' : ['AdaDadeoz', '5135cez1c'...]
-    }
-*/
 
 let products = []
 
@@ -34,7 +22,7 @@ for (b = 0; b < cartItem.length; b++) {
     //console.log("j'ai " + cartItem.length + " articles");
     let basketFilling = document.getElementById('basket');
     basketFilling.innerHTML += `
-    <td><a href="produit.html?id=${cartItem[b]._id}"><img src="${cartItem[b].imageUrl}" class="img-article" alt="Ours en peluche" ></a></td>
+    <td><a href="/HTML/produit.html?id=${cartItem[b]._id}"><img src="${cartItem[b].imageUrl}" class="img-article" alt="Ours en peluche" ></a></td>
     <td><span class="name">${cartItem[b].name}</span><br><span class="color">${cartItem[b].color}</span></td>
     <td class="d-flex-inline justify-content-around ">${cartItem[b].quantity}</td>
     <td>${(cartItem[b].price * cartItem[b].quantity)} €</td>
@@ -73,7 +61,7 @@ clear.addEventListener("click", (e) => {
     alert("Votre panier a été vidé");
 
     //Redirection vers la page "Accueil"
-    window.location.href = "index.html";
+    window.location.href = "/HTML/index.html";
 });
 
 //*********************** FIN BOUTON POUR VIDER TOTALEMENT LE PANIER *********************
@@ -115,44 +103,49 @@ form.innerHTML = `
 <p class="title-basket col-12 mb-3">Veuillez remplir le formulaire pour passer votre commande.</p>
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <label for="first-name">Nom</label>
+        <label for="last-name">Nom</label>
         <input type="text" class="form-control text-center" id="last-name" placeholder="DUPONT" required>
-
-        
+        <div class="verif-input verif-input-last-name"></div>
     </div>
 </div>
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <label for="last-name">Prénom</label>
+        <label for="first-name">Prénom</label>
         <input type="text" class="form-control text-center" id="first-name" placeholder="Martin" required>
+        <div class="verif-input verif-input-first-name"></div>
     </div>
 </div>
 <div class="form-row justify-content-center">
     <div class="form-group col-md-6">
         <label for="inputEmail4">Email</label>
         <input type="email" class="form-control text-center" id="inputEmail4" placeholder="dupont.martin@servicemail.com" required>
+        <div class="verif-input verif-input-email"></div>
     </div>
 </div>
 <div class="form-row justify-content-center">
     <div class="form-group col-md-6">
         <label for="inputAddress">Adresse</label>
         <input type="text" class="form-control text-center" id="inputAddress" placeholder="55 Rue du Faubourg Saint-Honoré" required>
+        <div class="verif-input verif-input-address"></div>
     </div>
 </div>
 <div class="form-row justify-content-center">
     <div class="form-group col-md-6">
         <label for="inputAddress2">Complément d'adresse</label>
         <input type="text" class="form-control text-center" id="inputAddress2" placeholder="Bâtiment, Appartement, Chez ...etc">
+        <div class="verif-input verif-input-address2"></div>
     </div>
 </div>
 <div class="form-row justify-content-center">
     <div class="form-group col-md-2">
         <label for="inputZip">Code Postal</label>
         <input type="text" class="form-control text-center" id="inputZip" placeholder="75008" required>
+        <div class="verif-input verif-input-zip"></div>
     </div>
     <div class="form-group col-md-4">
         <label for="inputCity">Ville</label>
         <input type="text" class="form-control text-center" id="inputCity" placeholder="PARIS" required>
+        <div class="verif-input verif-input-city"></div>
     </div>
 </div>
 <button type="submit" id="sendForm" class="btn btn-info mt-3 mb-5 m-auto col-sm-6 col-md-6 col-lg-6 col-xl-6">Valider ce panier ET passer la
@@ -172,7 +165,6 @@ sendForm.addEventListener("click", (e) => {
             address: document.getElementById("inputAddress").value, // ==> regex FormAddValues
             email: document.getElementById("inputEmail4").value, // ==> regex regexEmail
         }
-        //console.log(formValues);
         //---------------------------------------- VERIFICATION DONNES SAISES DANS LE FORMULAIRES ---------------------------------
 
     const formSuit = {
@@ -189,11 +181,6 @@ sendForm.addEventListener("click", (e) => {
     const address2 = formSuit.adresse2;
     const codePostal = formSuit.codePostal;
 
-    /****************** VERIFICATION DONNEE : NOM + PRENOM + VILLE **************/
-    const regexFormvalues = (value) => {
-        return /^[A-Za-z\s-ÀÂÄÇÈÉÊËÎÏÔÖÙÛÜàâäçéèêëîïôöùûü]{2,20}$/.test(value);
-    };
-
     /*
     modif return pour ajouter texte ""valide" ou non
     return document.getElementById("smallFirstName").innerHTML = `
@@ -206,35 +193,37 @@ sendForm.addEventListener("click", (e) => {
     VOIR POUR "TOGGLE"
     */
 
+    /****************** VERIFICATION DONNEE : NOM + PRENOM + VILLE **************/
+    const regexFormvalues = (value) => {
+        return /^[A-Za-z\s-ÀÂÄÇÈÉÊËÎÏÔÖÙÛÜàâäçéèêëîïôöùûü]{2,20}$/.test(value);
+    };
+
     function lastNameControl() {
         if (regexFormvalues(lastName)) {
-            console.log("nom valide");
             return true;
         } else {
-            alert("De 3 à 20 caractères.\nChiffres et caratères spéciaux interdits")
-            console.log("nom invalide");
+            const verifInput = document.querySelector(".verif-input-last-name");
+            verifInput.innerHTML = `ATTENTION : De 2 à 20 caractères. Chiffres et caratères spéciaux interdits.`;
             return false;
         }
     };
 
     function firstNameControl() {
         if (regexFormvalues(firstName)) {
-            console.log("prénom valide")
             return true;
         } else {
-            alert("De 3 à 20 caractères en majuscule.\nChiffres et caratères spéciaux interdits")
-            console.log("prénom invalide")
+            const verifInput = document.querySelector(".verif-input-first-name");
+            verifInput.innerHTML = `ATTENTION : De 2 à 20 caractères. Chiffres et caratères spéciaux interdits.`;
             return false;
         }
     };
 
     function villeControl() {
         if (regexFormvalues(ville)) {
-            console.log("ville valide")
             return true;
         } else {
-            //alert("De 3 à 20 caractères.\nChiffres et caratères spéciaux interdits")
-            console.log("ville invalide")
+            const verifInput = document.querySelector(".verif-input-city");
+            verifInput.innerHTML = `ATTENTION : De 2 à 20 caractères. Chiffres et caratères spéciaux interdits.`;
             return false;
         }
     };
@@ -246,11 +235,10 @@ sendForm.addEventListener("click", (e) => {
 
     function emailControl() {
         if (regexEmail(email)) {
-            console.log("e-mail valide");
             return true;
         } else {
-            alert("E-mail non valide")
-            console.log("e-mail invalide");
+            const verifInput = document.querySelector(".verif-input-email");
+            verifInput.innerHTML = `ATTENTION : E-mail non valide`;
             return false;
         }
     };
@@ -262,22 +250,20 @@ sendForm.addEventListener("click", (e) => {
 
     function addressControl() {
         if (regexFormAddvalues(address)) {
-            console.log("address valide")
             return true;
         } else {
-            //alert("De 0 à 50 caractères.\nChiffres et caratères spéciaux interdits")
-            console.log("address invalide")
+            const verifInput = document.querySelector(".verif-input-address");
+            verifInput.innerHTML = `ATTENTION : 50 caractères maximum. Chiffres et caratères spéciaux interdits.`;
             return false;
         }
     };
 
     function address2Control() {
         if (regexFormAddvalues(address2)) {
-            console.log("Comp add valide")
             return true;
         } else {
-            //alert("De 0 à 50 caractères.\nChiffres et caratères spéciaux interdits")
-            console.log("Comp add invalide")
+            const verifInput = document.querySelector(".verif-input-address2");
+            verifInput.innerHTML = `ATTENTION : 50 caractères maximum. Chiffres et caratères spéciaux interdits.`;
             return false;
         }
     };
@@ -290,11 +276,10 @@ sendForm.addEventListener("click", (e) => {
 
     function codePostalControl() {
         if (regexCodePostal(codePostal)) {
-            console.log("zip valide")
             return true;
         } else {
-            alert("Le code postal est composé de 5 chiffres")
-            console.log("zip invalide")
+            const verifInput = document.querySelector(".verif-input-zip");
+            verifInput.innerHTML = `ATTENTION : Le code postal est composé de 5 chiffres.`;
             return false;
         }
     };
@@ -308,8 +293,6 @@ sendForm.addEventListener("click", (e) => {
             products,
             contact
         });
-
-        console.log(toSend);
 
         //Envoie de "toSend" au serveur
         fetch("http://localhost:3000/api/teddies/order", {
@@ -328,7 +311,7 @@ sendForm.addEventListener("click", (e) => {
                 localStorage.setItem("total", JSON.stringify(total)); //Retour du montant de la commande récupéré dans les données du panier (calcul du prix total)
                 localStorage.removeItem("contact"); //suppression des données renseignées par l'utilisateur du LS
                 localStorage.removeItem("anyItem"); //suppression des produits ajoutés au panier par l'utilisateur du LS
-                window.location.replace("confirmation.html") //redirection de l'utilisateur vers la page de confirmation
+                window.location.replace("/HTML/confirmation.html") //redirection de l'utilisateur vers la page de confirmation
             })
             .catch(error => {
                 console.log(error); //Message à afficher en cas d'erreur lors du fetch 

@@ -4,18 +4,9 @@ let teddies;
 const result = document.getElementById("result");
 // Fonction pour récupérer les données API (fetch)
 
-
-// lien temporaire si API off
-/*const fetchTeddies = async() => {
-    teddies = await fetch(
-        "https://ab-p5-api.herokuapp.com/api/teddies").then(res => res.json());
-        console.log(teddies);
-};*/
-
 const fetchTeddies = async() => {
     teddies = await fetch(
         "http://localhost:3000/api/teddies").then(res => res.json());
-    console.log(teddies);
 };
 
 //Créer fonction pour modifier html
@@ -33,7 +24,7 @@ const showTeddies = async() => {
                             <h2 class="name-price card-title initialism">${teddie.name}</h2>
                             <p class="name-price card-text">${teddie.price/100}€</p>
                         </div>
-                        <a href="produit.html?id=${teddie._id}" class="btn btn-info col-6 btn-block m-auto">Voir produit</a>
+                        <a href="/HTML/produit.html?id=${teddie._id}" class="btn btn-info col-6 btn-block m-auto">Voir produit</a>
                     </div>
                 </div>
                 `

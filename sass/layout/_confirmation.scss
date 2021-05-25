@@ -18,7 +18,21 @@
     }
 }
 
+.the-end {
+    color: $color-primary;
+    font-size: 20px;
+    @include tablette {
+        font-size: 24px;
+    }
+    @include pc {
+        font-size: 28px;
+    }
+    @include pc-xl {
+        font-size: 32px;
+    }
+}
+
 .btn {
     color: $primary-font-color;
-    margin: auto;
+    margin: 15px auto!important;
 }
