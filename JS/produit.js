@@ -6,17 +6,6 @@ const result = document.getElementById("product");
 
 const params = new URLSearchParams(window.location.search);
 const teddieId = params.get("id");
-//console.log(teddieId);
-
-
-// lien temporaire si API off
-/*const fetchTeddies = async() => {
-    teddies = await fetch(
-        "https://ab-p5-api.herokuapp.com/api/teddies").then(res => res.json());
-        console.log(teddies);
-};*/
-
-
 
 
 const fetchProducts = async() => {
@@ -41,7 +30,7 @@ const fetchProducts = async() => {
                                     </select>
                                 </div>
                             </div>
-                            <a href="panier.html" id="btn-send" class="btn btn-info col-10 col-sm-5 col-md-8 col-lg-6 col-xl-8 btn-block ml-auto mr-auto mb-3">Ajouter l'article au panier</a>
+                            <a href="/HTML/panier.html" id="btn-send" class="btn btn-info col-10 col-sm-5 col-md-8 col-lg-6 col-xl-8 btn-block ml-auto mr-auto mb-3">Ajouter l'article au panier</a>
                         </div>
                     </div>
                     `
@@ -54,9 +43,8 @@ const fetchProducts = async() => {
             const selectionColor = document.getElementById('colors');
             selectionColor.innerHTML = colorSelection;
 
-            //Sélection Bouton "Ajouter l'artcile au panier"
+            //Sélection Bouton "Ajouter l'article au panier"
             const sendToBasket = document.getElementById("btn-send");
-            //console.log(sendToBasket);
 
             //Ecouter le bouton et envoyer au panier
             sendToBasket.addEventListener("click", (event) => {
@@ -68,7 +56,6 @@ const fetchProducts = async() => {
                     var validate = confirm("Ce produit a été ajouté dans votre panier. \nCliquez sur 'OK'' pour aller au panier ou sur ''Annuler'' pour continuer vos achats")
                     if (validate)
                         window.location = "panier.html";
-                    //console.log("OUVERTURE PAGE PANIER");
                     else
                         window.location = "index.html";
                 }
@@ -82,26 +69,16 @@ const fetchProducts = async() => {
 
 fetchProducts();
 
-/*function showOptionColor(colors){
-    let colorSelection = "";
-    for(let c = 0; c < colors.length; c++){
-        colorSelection += `<option>${(colors[c])}</option>`;
-    }
-    return colorSelection;
-    };*/
-
 //-------------------------Gestion du panier----------------------
 //Récupération des données sélectionnées par l'utilisateur et envoie au panier
 
 //Fonction d'ajout au panier
 function addItemCart(item) {
-    //console.log("ajouter au panier");
     // Déclarer une variable tableau pour données dans localstorage
     let cartItem = [];
     // Récupération couleur
     //Sélection ID couleur
     let idColor = document.getElementById('colors');
-    //console.log(idColor);
     //const choiceColor = idColor;
     const choiceColor = idColor.value;
     //Créer objet stockage données
